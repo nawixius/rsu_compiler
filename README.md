@@ -5,6 +5,7 @@
 - Memory safety guarantees
 - Easy integration with Rust ecosystems
 - Fast prototyping capabilities
+  
 `[nawixius](https://github.com/nawixius)`
 
 ### Running the Compiler
