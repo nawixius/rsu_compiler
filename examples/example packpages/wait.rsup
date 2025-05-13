@@ -1,0 +1,7 @@
+//solo se pueden UTILIZAR STD por ahora
+use std::thread;
+use std::time::Duration;
+
+func wait(seconds: u64) {
+    thread::sleep(Duration::from_millis(seconds));
+}
