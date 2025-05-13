@@ -1,16 +1,11 @@
 # Rust-U Compiler (rsu_compiler) x86
 
-**Rust-U (.rsu)** – A user-friendly Rust-based language for fast scripting & easy learning. Combines Lua's simplicity with Rust's power: memory safety, speed, and concurrency. Perfect for prototyping, game scripting, and automation!
-
-*Original repo(https://github.com/nawixius/rsu_compiler)*
-
-## Features
+**Rust-U (.rsu)** – A user-friendly Rust-based language for fast scripting & easy learning with memory safety.
 - Simple scripting syntax with Rust's performance
 - Memory safety guarantees
 - Easy integration with Rust ecosystems
 - Fast prototyping capabilities
-
-## Quick Start Guide
+`[nawixius](https://github.com/nawixius)`
 
 ### Running the Compiler
 1. Open Command Prompt (cmd)
