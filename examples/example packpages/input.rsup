@@ -1,9 +1,0 @@
-//solo se pueden UTILIZAR STD por ahora
-use std::io;
-
-fn get_input() -> String {
-    println!("Type something:");
-    let mut input = String::new();
-    io::stdin().read_line(&mut input).expect("ERROR: Failed to read line");
-    input.trim().to_string()  // Retorna un nuevo String (no &str)
-}
