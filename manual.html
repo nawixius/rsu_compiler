@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rust-u Programming Language Manual</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --code-bg: #282c34;
+            --code-text: #abb2bf;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            color: var(--dark);
+        }
+        h1, h2, h3, h4 {
+            color: var(--primary);
+            margin-top: 1.5em;
+        }
+        h1 { border-bottom: 2px solid var(--secondary); padding-bottom: 10px; }
+        h2 { border-left: 4px solid var(--secondary); padding-left: 10px; }
+        code {
+            background: var(--light);
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background: var(--code-bg);
+            color: var(--code-text);
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .note {
+            background: #e7f5ff;
+            padding: 15px;
+            border-left: 4px solid var(--secondary);
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        .warning {
+            background: #fff3bf;
+            padding: 15px;
+            border-left: 4px solid #ffd43b;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        th {
+            background-color: var(--primary);
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .tabs {
+            display: flex;
+            margin-bottom: -1px;
+        }
+        .tab {
+            padding: 10px 20px;
+            background: #eee;
+            border: 1px solid #ddd;
+            border-radius: 5px 5px 0 0;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        .tab.active {
+            background: white;
+            border-bottom: 1px solid white;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 0 5px 5px 5px;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .comparison-header {
+            font-weight: bold;
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rust-u Programming Language Manual v1.0</h1>
+    
+    <section id="introduction">
+        <h2>Introduction to Rust-u</h2>
+        <p>Rust-u is a modern pseudocode language that compiles to native Rust, combining high-level readability with Rust's performance and safety guarantees.</p>
+        
+        <div class="tabs">
+            <div class="tab active" onclick="openTab(event, 'features')">Key Features</div>
+            <div class="tab" onclick="openTab(event, 'philosophy')">Design Philosophy</div>
+            <div class="tab" onclick="openTab(event, 'community')">Community</div>
+        </div>
+        
+        <div id="features" class="tab-content active">
+            <ul>
+                <li><strong>Intuitive syntax</strong>: Designed to read like pseudocode</li>
+                <li><strong>Flexible type system</strong>: With inference and optional typing</li>
+                <li><strong>Automatic memory management</strong>: Built-in borrow checker</li>
+                <li><strong>Rust interoperability</strong>: Use any Rust crate</li>
+                <li><strong>Cross-platform</strong>: Compiles to the same targets as Rust</li>
+            </ul>
+        </div>
+        
+        <div id="philosophy" class="tab-content">
+            <p>Rust-u follows three core principles:</p>
+            <ol>
+                <li><strong>Accessibility</strong>: Beginner-friendly syntax</li>
+                <li><strong>Power</strong>: Capable of complex system development</li>
+                <li><strong>Transparency</strong>: Generated code is readable Rust</li>
+            </ol>
+        </div>
+		
+		<div id="community" class="tab-content">
+    <p>Join our community:</p>
+    <ul>
+        <li><a href="https://github.com/nawixius/rsu_compiler">https://github.com/nawixius/rsu_compiler</a></li>
+    </ul>
+</div>
+    </section>
+
+    <section id="quickstart">
+        <h2>Quick Start Guide</h2>
+        
+        <h3>Installation</h3>
+        <pre><code># Install from crates.io
+cargo install rustu-compiler
+
+# Verify installation
+rustu --version</code></pre>
+        
+        <h3>First Program</h3>
+        <div class="comparison">
+            <div>
+                <div class="comparison-header">Rust-u</div>
+                <pre><code>// hello.rsu
+pub func main() {
+    var name = "World"
+    print("Hello, {name}!")
+}</code></pre>
+            </div>
+            <div>
+                <div class="comparison-header">Generated Rust</div>
+                <pre><code>// hello.rs
+fn main() {
+    let name = "World";
+    println!("Hello, {}!", name);
+}</code></pre>
+            </div>
+        </div>
+        
+        <h3>Compilation and Execution</h3>
+        <pre><code># Compile and run
+rustu run hello.rsu
+
+# Compile only
+rustu compile hello.rsu
+
+# Show generated Rust code
+rustu show hello.rsu</code></pre>
+    </section>
+
+    <section id="detailed-syntax">
+        <h2>Detailed Syntax Reference</h2>
+        
+        <h3>Variables and Constants</h3>
+        <pre><code>var x = 10              // Type inference
+var mut counter = 0     // Mutable variable
+const PI = 3.1416       // Constant
+global MAX_USERS = 100  // Global variable</code></pre>
+        
+        <div class="note">
+            <p>The compiler automatically deduces when to use <code>&amp;</code> or <code>&amp;mut</code> based on program flow.</p>
+        </div>
+        
+        <h3>Advanced Functions</h3>
+        <pre><code>// Function with optional parameters
+func greet(name: str, title: str = "Mr./Ms.") {
+    print("Hello, {title} {name}")
+}
+
+// Generic function
+func first&lt;T&gt;(list: list[T]) -> T {
+    ret list[0]
+}
+
+// Closure
+var square = func(x: int) -> int { x * x }</code></pre>
+        
+        <h3>Structures and Enums</h3>
+        <pre><code>// Simple structure
+obj Point(x: float, y: float) {
+    func distance(&self) -> float {
+        ret sqrt(self.x.pow(2) + self.y.pow(2))
+    }
+}
+
+// Enumeration
+enum Status {
+    Active,
+    Inactive,
+    Suspended(reason: str)
+}
+
+// Usage
+var p = Point(3.0, 4.0)
+var status = Status::Suspended("Payment pending")</code></pre>
+    </section>
+
+    <section id="best-practices">
+        <h2>Best Practices</h2>
+        
+        <h3>Common Patterns</h3>
+        <div class="tabs">
+            <div class="tab active" onclick="openTab(event, 'error-handling')">Error Handling</div>
+            <div class="tab" onclick="openTab(event, 'oop-patterns')">OOP Patterns</div>
+            <div class="tab" onclick="openTab(event, 'concurrency')">Concurrency</div>
+        </div>
+        
+        <div id="error-handling" class="tab-content active">
+            <pre><code>// Explicit Result
+func divide(a: float, b: float) -> Result&lt;float, str&gt; {
+    if b == 0 {
+        ret Err("Division by zero")
+    }
+    ret Ok(a / b)
+}
+
+// Usage with match
+match divide(10.0, 0.0) {
+    Ok(result) => print("Result: {result}"),
+    Err(e) => print("Error: {e}")
+}</code></pre>
+        </div>
+        
+        <div id="oop-patterns" class="tab-content">
+            <pre><code>// Builder pattern
+obj ClientBuilder(name: str) {
+    var mut age: int? = null
+    var mut email: str? = null
+    
+    func with_age(age: int) -> Self {
+        self.age = age
+        ret self
+    }
+    
+    func build() -> Client {
+        ret Client {
+            name: self.name,
+            age: self.age ?: 18,
+            email: self.email
+        }
+    }
+}
+
+// Usage
+var client = ClientBuilder("Anna")
+    .with_age(30)
+    .build()</code></pre>
+        </div>
+        
+        <div id="concurrency" class="tab-content">
+            <pre><code>// Simple threads
+var thread = spawn {
+    print("Secondary thread executing")
+}
+
+// Channels
+var (sender, receiver) = channel()
+
+spawn {
+    sender.send("Message from thread")
+}
+
+var message = receiver.receive()</code></pre>
+        </div>
+        
+        <h3>Optimization Tips</h3>
+        <ul>
+            <li>Use <code>const</code> for immutable values</li>
+            <li>Prefer <code>str</code> over <code>string</code> when ownership isn't needed</li>
+            <li>Use <code>list::with_capacity</code> when you know the size in advance</li>
+        </ul>
+    </section>
+
+    <footer style="margin-top: 50px; border-top: 1px solid #eee; padding-top: 20px;">
+        <p>Last updated: May 2025 | Rust-u v1.0.0 | MIT License</p>
+    </footer>
+
+    <script>
+        function openTab(evt, tabName) {
+            const tabContents = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+            
+            const tabs = document.getElementsByClassName("tab");
+            for (let i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove("active");
+            }
+            
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>
